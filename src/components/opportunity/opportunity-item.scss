@@ -1,0 +1,29 @@
+.opportunity-item {
+    display: grid;
+    grid-template-columns: 30px 40px auto;
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
+
+    .rank {
+        align-self: center;
+    }
+    .voting {
+        align-self: center;
+        button {
+            display: block;
+        }
+    }
+    .content {
+        align-self: center;
+        .job-title {
+            color: black;
+            margin-bottom: 5px;
+        }
+        .sub-content {
+            
+            a {
+                color: slategrey;
+            }
+        }
+    }
+}

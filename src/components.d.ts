@@ -137,4 +137,40 @@ declare global {
   }
 }
 
+
+import {
+  OpportunityItem as OpportunityItem
+} from './components/opportunity/opportunity-item';
+
+declare global {
+  interface HTMLOpportunityItemElement extends OpportunityItem, HTMLStencilElement {
+  }
+  var HTMLOpportunityItemElement: {
+    prototype: HTMLOpportunityItemElement;
+    new (): HTMLOpportunityItemElement;
+  };
+  interface HTMLElementTagNameMap {
+    "opportunity-item": HTMLOpportunityItemElement;
+  }
+  interface ElementTagNameMap {
+    "opportunity-item": HTMLOpportunityItemElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "opportunity-item": JSXElements.OpportunityItemAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface OpportunityItemAttributes extends HTMLAttributes {
+      alt?: string;
+      company?: string;
+      points?: number;
+      rank?: number;
+      source?: string;
+      src?: string;
+      title?: string;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }
