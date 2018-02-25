@@ -15,10 +15,13 @@
   <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
   <link href="/build/app.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script src="/build/config.js"></script>
+  <script>
+    firebase.initializeApp(firebaseConfig);
+  </script>  
   <script src="/build/app.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-
-
   <link rel="apple-touch-icon" href="/assets/icon/icon.png">
   <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
   <link rel="manifest" href="/manifest.json">

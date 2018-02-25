@@ -18,7 +18,8 @@
   "dependencies": {
     "@ionic/core": "0.0.2-65",
     "@stencil/core": "0.6.1",
-    "@stencil/router": "latest"
+    "@stencil/router": "latest",
+    "firebase": "^4.10.1"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",

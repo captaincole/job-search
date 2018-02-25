@@ -1,7 +1,7 @@
 dist/
 !www/favicon.ico
 www/
-src/config.js
+src/helpers/config.js
 
 *~
 *.sw[mnpcod]
