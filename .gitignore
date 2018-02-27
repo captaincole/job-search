@@ -13,6 +13,8 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
+.firebaserc
+firebase.json
 .idea/
 .vscode/
 .sass-cache/

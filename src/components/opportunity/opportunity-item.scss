@@ -11,6 +11,10 @@
         align-self: center;
         button {
             display: block;
+            color: lightgrey;
+        }
+        .active {
+            color: blue;
         }
     }
     .content {

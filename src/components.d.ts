@@ -109,6 +109,36 @@ declare global {
 
 
 import {
+  LoginForm as LoginForm
+} from './components/login-form/login-form';
+
+declare global {
+  interface HTMLLoginFormElement extends LoginForm, HTMLStencilElement {
+  }
+  var HTMLLoginFormElement: {
+    prototype: HTMLLoginFormElement;
+    new (): HTMLLoginFormElement;
+  };
+  interface HTMLElementTagNameMap {
+    "login-form": HTMLLoginFormElement;
+  }
+  interface ElementTagNameMap {
+    "login-form": HTMLLoginFormElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "login-form": JSXElements.LoginFormAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LoginFormAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   MyApp as MyApp
 } from './components/my-app/my-app';
 
@@ -162,13 +192,9 @@ declare global {
   }
   namespace JSXElements {
     export interface OpportunityItemAttributes extends HTMLAttributes {
-      alt?: string;
-      company?: string;
-      points?: number;
+      job?: any;
       rank?: number;
-      source?: string;
-      src?: string;
-      title?: string;
+      user?: any;
     }
   }
 }

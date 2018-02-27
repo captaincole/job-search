@@ -2,6 +2,8 @@ import '@ionic/core';
 import '@stencil/core';
 import { Component, Prop, Listen } from '@stencil/core';
 import { ToastController } from '@ionic/core';
+import { firebaseConfig } from '../../helpers/config';
+import firebase from 'firebase';
 
 @Component({
   tag: 'my-app',
@@ -10,6 +12,15 @@ import { ToastController } from '@ionic/core';
 export class MyApp {
 
   @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+
+  configureFirebase() {
+    firebase.initializeApp(firebaseConfig);
+    console.log('Firebase Configured!', firebase);
+  }
+
+  componentWillLoad() {
+    this.configureFirebase();
+  }
 
   componentDidLoad() {
     /*
