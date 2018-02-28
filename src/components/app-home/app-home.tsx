@@ -110,3 +110,71 @@ export class AppHome {
     );
   }
 }
+
+let jobs = [{
+  title: 'Front End Engineer',
+  company: 'loggly',
+  points: 0,
+  source: 'Quest Groups, Darren',
+  status: 'Interested'
+},{
+  title: 'Disributed Engineer',
+  company: 'Protocol Labs',
+  points: 0,
+  source: 'organic',
+  status: 'applied'
+},
+{
+  title: 'Lead Engineer',
+  company: 'SyncThink',
+  points: 0,
+  source: 'Quest, Cheyenne',
+  status: 'interested'
+},
+{
+  title: 'Front End Engineer',
+  company: 'Percipient',
+  points: 0,
+  source: 'Quest, Cheyenne',
+  location: 'Sunnyvale, CA',
+  status: 'interested'
+},{
+  title: 'Front End Engineer',
+  company: 'Oden',
+  points: 0,
+  source: 'Quest, Matt',
+  location: 'NYC',
+  status: 'interested'
+},{
+  title: 'Front End Engineer',
+  company: 'CrowdTap',
+  points: 0,
+  source: 'Quest, Chelsey',
+  location: 'NYC',
+  status: 'intereseted'
+},{
+  title: 'Engineering Manager',
+  company: 'Lifion',
+  points: 0,
+  source: 'Quest, Mitch',
+  location: 'Chelsea, New York',
+  status: 'interested'
+}, {
+  title: 'Full-Stack Lead',
+  company: 'Fiverr',
+  points: 0,
+  source: 'Quest, Jake',
+  location: 'NYC',
+  status: 'interested',
+},{
+  title: 'Senior Front-End Engineer',
+  company: 'Compass',
+  points: 0,
+  source: 'Quest, Jake',
+  location: 'NYC',
+  status: 'intersted'
+},{
+  
+}
+
+]

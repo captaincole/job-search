@@ -33,7 +33,7 @@ export class OpportunityItem {
         snapshot.forEach( (vote): any => {
             let voteValue = vote.val();
             voteCount += voteValue.points;
-            if (voteValue.user === this.user.email) {
+            if (this.user && voteValue.user === this.user.email) {
                 // is current users vote
                 console.log('Found Vote', voteValue);
                 this.vote = { id: vote.key , ...voteValue};
@@ -44,10 +44,14 @@ export class OpportunityItem {
         this.job.points = voteCount;
         this.points = voteCount;
         // Update job
-        firebase.database().ref('jobs/' + this.job.id).update({
-            points: this.points
-        });
+        if (this.user) {
+            firebase.database().ref('jobs/' + this.job.id).update({
+                points: this.points
+            });
+        }
         this.update = !this.update;
+     }, (err) => {
+         console.warn(err);
      });
   }
 
@@ -55,34 +59,40 @@ export class OpportunityItem {
     if (!this.user) {
         alert('Sign in to be able to vote!');
         return;
-    }
-    if (this.vote) {
-        // Has vote
-        if (this.vote.points === val) {
-            // Remove Vote
-           console.log('Removing Vote', this.job.company);
-           await firebase.database().ref('votes/' + this.vote.id).remove();
-           this.vote = undefined;
-           // Trigger ui update...
-           this.update = !this.update;
-           
-        } else if (this.vote.points !== val) {
-            // Remove Negative Vote, Add Positive Vote
-            console.log('Updating Vote');
-            await firebase.database().ref('votes/' + this.vote.id).update({
-                points: val
-            });
-        }
     } else {
-        // Add new vote
-        console.log('Adding new vote');
-        await firebase.database().ref('votes').push({
-            points: val,
-            user: this.user.email,
-            voteOn: this.job.id,
-            voteType: 'jobs'
-        });
+        try {
+            if (this.vote) {
+                // Has vote
+                if (this.vote.points === val) {
+                    // Remove Vote
+                console.log('Removing Vote', this.job.company);
+                await firebase.database().ref('votes/' + this.vote.id).remove();
+                this.vote = undefined;
+                // Trigger ui update...
+                this.update = !this.update;
+                
+                } else if (this.vote.points !== val) {
+                    // Remove Negative Vote, Add Positive Vote
+                    console.log('Updating Vote');
+                    await firebase.database().ref('votes/' + this.vote.id).update({
+                        points: val
+                    });
+                }
+            } else {
+                // Add new vote
+                console.log('Adding new vote');
+                await firebase.database().ref('votes').push({
+                    points: val,
+                    user: this.user.email,
+                    voteOn: this.job.id,
+                    voteType: 'jobs'
+                });
+            }
+        } catch (err) {
+            console.warn('Error Submitting Vote' , err);
+        }
     }
+
   }
 
   render() {

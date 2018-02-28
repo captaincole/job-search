@@ -33,13 +33,13 @@ export class MyApp {
       and serve the fresh content
     */
     window.addEventListener('swUpdate', () => {
-      this.toastCtrl.create({
+      /* this.toastCtrl.create({
         message: 'New version available',
         showCloseButton: true,
         closeButtonText: 'Reload'
       }).then((toast) => {
         toast.present();
-      });
+      }); */
     })
   }
 
