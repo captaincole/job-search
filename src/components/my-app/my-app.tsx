@@ -11,15 +11,15 @@ import firebase from 'firebase';
 })
 export class MyApp {
 
+  constructor() {
+    this.configureFirebase();
+  }
+
   @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
 
   configureFirebase() {
     firebase.initializeApp(firebaseConfig);
     console.log('Firebase Configured!', firebase);
-  }
-
-  componentWillLoad() {
-    this.configureFirebase();
   }
 
   componentDidLoad() {

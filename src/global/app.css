@@ -4,3 +4,11 @@ body {
   padding: 0px;
   font-family: sans-serif;
 }
+
+main {
+  height: 100%;
+}
+
+ion-content {
+  height: 100%;
+}

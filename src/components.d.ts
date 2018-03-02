@@ -3,19 +3,31 @@
  * It contains typing information for all components that exist in this project
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
-
-import {
-  MatchResults,
-} from '@stencil/router';
-
 declare global {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
   interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
     componentOnReady(done: (ele?: this) => void): void;
   }
+
+  interface HTMLAttributes {}
 }
 
+import 'ionicons';
+import '@stencil/router';
+import '@ionic/core';
 
+import {
+  MatchResults,
+} from '@stencil/router';
+import {
+  Vote,
+} from './model/model';
 
 import {
   AppHome as AppHome
@@ -192,9 +204,14 @@ declare global {
   }
   namespace JSXElements {
     export interface OpportunityItemAttributes extends HTMLAttributes {
-      job?: any;
+      company?: string;
+      jobId?: string;
+      points?: number;
       rank?: number;
+      source?: string;
+      title?: string;
       user?: any;
+      vote?: Vote;
     }
   }
 }

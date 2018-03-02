@@ -1,4 +1,5 @@
 import { Component, State, Listen } from '@stencil/core';
+import { Job } from '../../model/model';
 import firebase from 'firebase';
 
 @Component({
@@ -7,9 +8,10 @@ import firebase from 'firebase';
 })
 export class AppHome {
 
-  @State() jobList: Array<any> = [];
+  @State() jobList: Array<Job> = [];
   @State() user: any;
   @State() showLogin: boolean = false;
+  @State() userVotes: any = {};
 
   componentDidLoad() {
     // Load Data!
@@ -20,11 +22,8 @@ export class AppHome {
   }
 
   addJob() {
-    firebase.database().ref('jobs').push({
-      title: 'Senior Frontend Engineer',
-      company: 'Peloton',
-      points: 0,
-      source: 'Quest Groups, Matt'
+    jobs.forEach(job => {
+        firebase.database().ref('jobs').push(job);
     });
   }
 
@@ -32,6 +31,12 @@ export class AppHome {
     // Setup Firebase Listeners To Push Data...
     let jobsRef = firebase.database().ref('jobs').orderByChild('points').limitToLast(25);
     jobsRef.once('value', (snapshot) => {
+      snapshot.forEach((childSnapshot): any => {
+        this.setVoteListener(childSnapshot.key);
+      });
+    });
+
+    jobsRef.on('value', (snapshot) => {
       console.log('got snapshot change');
       let tmpJobList = [];
       snapshot.forEach( (childSnapshot): any => {
@@ -40,6 +45,22 @@ export class AppHome {
       this.jobList = tmpJobList;
     }, (err) => {
       console.warn('Error Getting Data', err);
+    });
+  }
+
+  setVoteListener(jobId: string, ) {
+    // Update Jobs Points Based On New Points...
+    let tmpListener = firebase.database().ref('votes').orderByChild('voteOn').equalTo(jobId);
+    tmpListener.on('value' , (snapshot) => {
+      let newPoints = 0;
+      snapshot.forEach( (voteRef: any): any => {
+        newPoints += voteRef.val().points;
+        this.userVotes[jobId] = { id: voteRef.key, ...voteRef.val()};
+      });
+      // Update Job
+      firebase.database().ref('jobs/' + jobId).update({
+        points: newPoints
+      });
     });
   }
 
@@ -78,6 +99,30 @@ export class AppHome {
     this.showLogin = false;
   }
 
+  @Listen('opportunityVote')
+  handleVote($event) {
+    let job = $event.detail.job;
+    let vote = $event.detail.vote;
+    let value = $event.detail.value;
+    console.log('job' , job, 'vote' , vote);
+    // Update or create
+    if (vote) {
+      let tmpVoteRef = firebase.database().ref('votes/' + vote.id);
+      tmpVoteRef.update({
+        points: value
+      });
+      tmpVoteRef.off();
+    } else {
+      // Create Vote
+      firebase.database().ref('votes').push({
+        user: this.user.email,
+        voteOn: job,
+        points: value,
+        voteType: 'jobs'
+      });
+    }
+  }
+
   render() {
     return (
       <ion-page>
@@ -93,9 +138,11 @@ export class AppHome {
         { this.showLogin ? <login-form></login-form> : null }
         <ion-content>
           <div id="firebaseui-auth-container"></div>
-          <table>
-            {this.jobList.map( (job, index) => 
-              <opportunity-item job={job} rank={index + 1} user={this.user}
+          <table class="job-list">
+            {this.jobList.map( (job: Job, index) => 
+              <opportunity-item jobId={job.id} title={job.title}
+               rank={index + 1} user={this.user} company={job.company}
+               source={job.source} vote={this.userVotes[job.id]} points={job.points}
               ></opportunity-item>
             )}
           </table>
@@ -152,29 +199,5 @@ let jobs = [{
   source: 'Quest, Chelsey',
   location: 'NYC',
   status: 'intereseted'
-},{
-  title: 'Engineering Manager',
-  company: 'Lifion',
-  points: 0,
-  source: 'Quest, Mitch',
-  location: 'Chelsea, New York',
-  status: 'interested'
-}, {
-  title: 'Full-Stack Lead',
-  company: 'Fiverr',
-  points: 0,
-  source: 'Quest, Jake',
-  location: 'NYC',
-  status: 'interested',
-},{
-  title: 'Senior Front-End Engineer',
-  company: 'Compass',
-  points: 0,
-  source: 'Quest, Jake',
-  location: 'NYC',
-  status: 'intersted'
-},{
-  
 }
-
 ]

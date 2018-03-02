@@ -1,6 +1,6 @@
 {
-  "name": "Ionic PWA Toolkit",
-  "short_name": "Ionic PWA",
+  "name": "Andrews Job Search",
+  "short_name": "Job Search",
   "start_url": "/",
   "display": "standalone",
   "icons": [{

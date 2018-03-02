@@ -21,7 +21,7 @@ export class AppProfile {
   // replace with your key in production
   publicServerKey = urlB64ToUint8Array('BBsb4au59pTKF4IKi-aJkEAGPXxtzs-lbtL58QxolsT2T-3dVQIXTUCCE1TSY8hyUvXLhJFEUmH7b5SJfSTcT-E');
 
-  componentWillLoad() {
+  componentDidLoad() {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
       this.swSupport = true;
     } else {
