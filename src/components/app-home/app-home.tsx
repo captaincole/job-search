@@ -64,6 +64,18 @@ export class AppHome {
     });
   }
 
+  findUserVotesOnce() {
+    if (this.user) {
+      let userVoteRef = firebase.database().ref('votes').orderByChild('user').equalTo(this.user.email);
+      userVoteRef.once('value', (snapshot) => {
+        snapshot.forEach( (voteRef): any => {
+          let vote = voteRef.val();
+          this.userVotes[vote.voteOn] = { id: voteRef.key, ...vote };
+        });
+      });
+    }
+  }
+
   getUser() {
     this.user = firebase.auth().currentUser;
     console.log('Found User' , this.user);
@@ -71,6 +83,7 @@ export class AppHome {
     firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         this.user = user;
+        this.findUserVotesOnce()
         // this.showLogin = false;
         console.log('Found User State Change' , this.user);
       } else {
