@@ -90,6 +90,36 @@ declare global {
 
 
 import {
+  JobProfile as JobProfile
+} from './components/job-profile/job-profile';
+
+declare global {
+  interface HTMLJobProfileElement extends JobProfile, HTMLStencilElement {
+  }
+  var HTMLJobProfileElement: {
+    prototype: HTMLJobProfileElement;
+    new (): HTMLJobProfileElement;
+  };
+  interface HTMLElementTagNameMap {
+    "job-profile": HTMLJobProfileElement;
+  }
+  interface ElementTagNameMap {
+    "job-profile": HTMLJobProfileElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "job-profile": JSXElements.JobProfileAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface JobProfileAttributes extends HTMLAttributes {
+      match?: MatchResults;
+    }
+  }
+}
+
+
+import {
   LazyImg as LazyImg
 } from './components/lazy-img/lazy-img';
 

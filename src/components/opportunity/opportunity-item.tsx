@@ -50,15 +50,17 @@ export class OpportunityItem {
               </button>
           </div>
           <div class="content">
-              <a class="job-title">
-                  <span> {this.company} </span>
-                  <span> {this.title} </span>
-              </a>
-              <div class="sub-content">
-                  <span> {this.points * -1} points </span> |
-                  <a> source: { this.source} </a> |
-                  <a> {this.totalComments} comments </a>
-              </div>
+              <stencil-route-link url={'/profile/' + this.jobId}>
+                <a class="job-title">
+                    <span> {this.company} </span>
+                    <span> {this.title} </span>
+                </a>
+                <div class="sub-content">
+                    <span> {this.points * -1} points </span> |
+                    <a> source: { this.source} </a> |
+                    <a> {this.totalComments} comments </a>
+                </div>
+              </stencil-route-link>
           </div>
       </div>
     );

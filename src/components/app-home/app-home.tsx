@@ -142,9 +142,10 @@ export class AppHome {
         <ion-header>
           <ion-toolbar color='primary'>
             <ion-title>Job Search</ion-title>
-            <ion-buttons slot="end">
-              { this.user ? <div><button onClick={() => this.logout() }>Logout</button><div>{this.user.displayName}</div></div> : <button ion-button onClick={() => this.login()}>Login</button> }
-              <button onClick={() => this.refreshPage()}>Refresh</button>
+            <ion-buttons slot="mode-end">
+              { this.user ? <ion-button color="white" fill="clear" slot="end" class="tool-button" onClick={() => this.logout() }>Logout</ion-button> : <ion-button color="white" fill="clear" slot="end" class="tool-button" onClick={() => this.login()}>Login</ion-button> }
+              <ion-button fill="clear" color="white" slot="end" class="tool-button" onClick={() => this.refreshPage()}>Sync</ion-button>
+              { this.user ? <ion-button color="white" fill="clear" slot="end">{this.user.displayName}</ion-button>: null }
             </ion-buttons>
           </ion-toolbar>
         </ion-header>

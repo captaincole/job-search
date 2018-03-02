@@ -10,4 +10,13 @@ app-home {
       margin: 0px 5px;
     }
   }
+  ion-buttons {
+    ion-button {
+      color: white !important;
+      button {
+        color: white !important;
+        padding: 5px;
+      }
+    }
+  }
 }
