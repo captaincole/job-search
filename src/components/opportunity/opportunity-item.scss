@@ -12,9 +12,10 @@
         button {
             display: block;
             color: lightgrey;
+            background-color: transparent;
         }
         .active {
-            color: blue;
+            color: $app-primary-color;
         }
     }
     .content {
@@ -23,11 +24,12 @@
         }
         align-self: center;
         .job-title {
+            font-size: 16px;
             color: black;
             margin-bottom: 5px;
         }
         .sub-content {
-            
+            font-size: 16px;
             a {
                 color: slategrey;
             }

@@ -6,7 +6,9 @@ exports.config = {
   },
   globalStyle: 'src/global/app.css',
   plugins: [
-    sass()
+    sass({injectGlobalPaths: [
+      'src/global/variables.scss'
+    ]})
   ]
 };
 

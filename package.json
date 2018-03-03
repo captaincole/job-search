@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "@ionic/core": "0.0.4-1",
-    "@stencil/core": "0.6.14",
+    "@stencil/core": "0.6.17",
     "@stencil/router": "latest",
     "firebase": "^4.10.1"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.2",
+    "@stencil/sass": "0.0.3",
     "@stencil/utils": "latest",
     "@types/jest": "^21.1.1",
     "jest": "^21.2.1"

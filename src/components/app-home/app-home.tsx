@@ -144,8 +144,8 @@ export class AppHome {
             <ion-title>Job Search</ion-title>
             <ion-buttons slot="mode-end">
               { this.user ? <button class="tool-button" onClick={() => this.logout() }>LOGOUT</button> : <button class="tool-button" onClick={() => this.login()}>LOGIN</button> }
+              { this.user ? <button class="tool-button">{this.user.displayName.toUpperCase()}</button>: null }
               <button class="tool-button" onClick={() => this.refreshPage()}><i class="fas fa-sync fa-2x"></i></button>
-              { this.user ? <button class="tool-button">{this.user.displayName}</button>: null }
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -160,8 +160,6 @@ export class AppHome {
               ></opportunity-item>
             )}
           </table>
-
-          { /*  */ }
         </ion-content>
       </ion-page>
     );
