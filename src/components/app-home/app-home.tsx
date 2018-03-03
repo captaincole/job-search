@@ -143,9 +143,9 @@ export class AppHome {
           <ion-toolbar color='primary'>
             <ion-title>Job Search</ion-title>
             <ion-buttons slot="mode-end">
-              { this.user ? <ion-button color="white" fill="clear" slot="end" class="tool-button" onClick={() => this.logout() }>Logout</ion-button> : <ion-button color="white" fill="clear" slot="end" class="tool-button" onClick={() => this.login()}>Login</ion-button> }
-              <ion-button fill="clear" color="white" slot="end" class="tool-button" onClick={() => this.refreshPage()}>Sync</ion-button>
-              { this.user ? <ion-button color="white" fill="clear" slot="end">{this.user.displayName}</ion-button>: null }
+              { this.user ? <button class="tool-button" onClick={() => this.logout() }>LOGOUT</button> : <button class="tool-button" onClick={() => this.login()}>LOGIN</button> }
+              <button class="tool-button" onClick={() => this.refreshPage()}><i class="fas fa-sync fa-2x"></i></button>
+              { this.user ? <button class="tool-button">{this.user.displayName}</button>: null }
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -161,11 +161,7 @@ export class AppHome {
             )}
           </table>
 
-          { /* <stencil-route-link url='/profile/stencil'>
-            <ion-button>
-              Profile page
-            </ion-button>
-          </stencil-route-link> */ }
+          { /*  */ }
         </ion-content>
       </ion-page>
     );

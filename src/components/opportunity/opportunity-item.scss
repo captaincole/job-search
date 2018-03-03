@@ -18,6 +18,9 @@
         }
     }
     .content {
+        a {
+            text-decoration: none;
+        }
         align-self: center;
         .job-title {
             color: black;

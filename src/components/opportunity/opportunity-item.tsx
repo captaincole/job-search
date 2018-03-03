@@ -50,7 +50,7 @@ export class OpportunityItem {
               </button>
           </div>
           <div class="content">
-              <stencil-route-link url={'/profile/' + this.jobId}>
+              <stencil-route-link url={`/profile/${this.jobId}`}>
                 <a class="job-title">
                     <span> {this.company} </span>
                     <span> {this.title} </span>

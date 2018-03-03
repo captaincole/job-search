@@ -1,8 +1,7 @@
-import { Component, Listen, Prop, State } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import { ToastController } from '@ionic/core';
 import { Job } from '../../model/model';
-import { urlB64ToUint8Array } from '../../helpers/utils';
+import { RouterHistory } from '@stencil/router';
 import firebase from 'firebase';
 
 @Component({
@@ -12,14 +11,8 @@ import firebase from 'firebase';
 export class JobProfile {
 
   @Prop() match: MatchResults;
-  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+  @Prop() history: RouterHistory;
   @State() job: Job;
-  @State() notify: boolean;
-  @State() swSupport: boolean;
-
-  // demo key from https://web-push-codelab.glitch.me/
-  // replace with your key in production
-  publicServerKey = urlB64ToUint8Array('BBsb4au59pTKF4IKi-aJkEAGPXxtzs-lbtL58QxolsT2T-3dVQIXTUCCE1TSY8hyUvXLhJFEUmH7b5SJfSTcT-E');
 
   componentDidLoad() {
     console.log(this.match.params.id);
@@ -32,41 +25,9 @@ export class JobProfile {
         this.job = { id: snapshot.key, ...snapshot.val()};
     });
   }
-
-  @Listen('ionChange')
-  subscribeToNotify($event) {
-    console.log($event.detail.checked);
-
-    if ($event.detail.checked === true) {
-      this.handleSub();
-    }
-  }
-
-  handleSub() {
-    // get our service worker registration
-    navigator.serviceWorker.getRegistration().then((reg: ServiceWorkerRegistration) => {
-
-      // get push subscription
-      reg.pushManager.getSubscription().then((sub: PushSubscription) => {
-
-        // if there is no subscription that means
-        // the user has not subscribed before
-        if (sub === null) {
-          // user is not subscribed
-          reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: this.publicServerKey
-          })
-            .then((sub: PushSubscription) => {
-              // our user is now subscribed
-              // lets reflect this in our UI
-              console.log('web push subscription: ', sub);
-
-              this.notify = true;
-            })
-        }
-      })
-    })
+  
+  goBack() {
+    this.history.goBack();
   }
 
   render() {
@@ -74,14 +35,34 @@ export class JobProfile {
         <ion-page>
           <ion-header>
             <ion-toolbar color='primary'>
+                <ion-buttons slot="start">
+                    <button class="toolbar-but" onClick={ () => { this.goBack() }}><i class="fas fa-chevron-left fa-2x"></i></button>
+                </ion-buttons>
               <ion-title>Ionic PWA Toolkit</ion-title>
             </ion-toolbar>
           </ion-header>
 
           <ion-content>
-            <p>
-              {this.job ? this.job.title : null}
-            </p>
+            { this.job ? <div class="profile">
+                <div class="job-title">
+                     <a href={this.job.companyUrl}>{this.job.company} - {this.job.title}</a>
+                </div>
+                <div class="location">
+                    {this.job.location}
+                </div>
+                <div class="section">
+                    <div class="header">Company Description</div>
+                    <p>{this.job.companyDescription}</p>
+                </div>
+                <div class="section">
+                    <div class="header">Company Details</div>                    
+                    <p>{this.job.companyDetails}</p>
+                </div>
+                <div class="section">
+                    <div class="header">The Job</div>                    
+                    <p>{this.job.jobSummary}</p>
+                </div>
+            </div> : null }
           </ion-content>
         </ion-page>
       );

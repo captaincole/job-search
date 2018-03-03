@@ -24,6 +24,7 @@ import '@ionic/core';
 
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 import {
   Vote,
@@ -113,6 +114,7 @@ declare global {
   }
   namespace JSXElements {
     export interface JobProfileAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
     }
   }

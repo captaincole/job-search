@@ -10,13 +10,17 @@ app-home {
       margin: 0px 5px;
     }
   }
-  ion-buttons {
-    ion-button {
-      color: white !important;
-      button {
-        color: white !important;
-        padding: 5px;
-      }
-    }
+  .tool-button {
+    background-color: transparent !important;
+    margin: 5px;
+    padding: 5px;
+    vertical-align: middle;
   }
+
+  .bar-buttons-md {
+    background-color: transparent !important;
+    vertical-align: middle;
+  }
+
+
 }
