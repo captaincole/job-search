@@ -1,4 +1,4 @@
-import {Component, Prop, State, Event, EventEmitter} from '@stencil/core';
+import {Component, Prop, Event, EventEmitter} from '@stencil/core';
 import { Vote } from '../../model/model';
 
 @Component({
@@ -14,7 +14,7 @@ export class OpportunityItem {
   @Prop() points: number;
   @Prop() source: string;
   @Prop() rank: number;
-  @State() totalComments: number = 22;
+  @Prop() status: string;
   @Prop() user: any;
   @Event() opportunityVote: EventEmitter;
 
@@ -58,7 +58,7 @@ export class OpportunityItem {
                 <div class="sub-content">
                     <span> {this.points * -1} points </span> |
                     <a> source: { this.source} </a> |
-                    <a> {this.totalComments} comments </a>
+                    <button class={`status ${this.status}`}>{this.status.toUpperCase()}</button>
                 </div>
               </stencil-route-link>
           </div>

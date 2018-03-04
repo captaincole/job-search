@@ -5,6 +5,7 @@ export default interface Job {
     source: string;
     points: number;
     companyUrl: string;
+    status: string;
     companyDescription?: string;
     companyDetails?: string;
     jobSummary?: string;

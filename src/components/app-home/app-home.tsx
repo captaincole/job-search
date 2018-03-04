@@ -154,7 +154,7 @@ export class AppHome {
           <div id="firebaseui-auth-container"></div>
           <table class="job-list">
             {this.jobList.map( (job: Job, index) => 
-              <opportunity-item jobId={job.id} title={job.title}
+              <opportunity-item jobId={job.id} title={job.title} status={job.status}
                rank={index + 1} user={this.user} company={job.company}
                source={job.source} vote={this.userVotes[job.id]} points={job.points}
               ></opportunity-item>

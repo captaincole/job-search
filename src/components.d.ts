@@ -241,6 +241,7 @@ declare global {
       points?: number;
       rank?: number;
       source?: string;
+      status?: string;
       title?: string;
       user?: any;
       vote?: Vote;

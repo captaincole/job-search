@@ -38,30 +38,32 @@ export class JobProfile {
                 <ion-buttons slot="start">
                     <button class="toolbar-but" onClick={ () => { this.goBack() }}><i class="fas fa-chevron-left fa-2x"></i></button>
                 </ion-buttons>
-              <ion-title>Ionic PWA Toolkit</ion-title>
+              <ion-title>Job Profile</ion-title>
             </ion-toolbar>
           </ion-header>
-
           <ion-content>
             { this.job ? <div class="profile">
                 <div class="job-title">
-                     <a href={this.job.companyUrl}>{this.job.company} - {this.job.title}</a>
+                     <a target="_blank" href={this.job.companyUrl}>{this.job.company} - {this.job.title}</a>
                 </div>
                 <div class="location">
                     {this.job.location}
                 </div>
-                <div class="section">
+                <div class="location">
+                    <button class={`status ${this.job.status}`}>{this.job.status.toUpperCase()}</button>
+                </div>
+                {this.job.companyDescription ? <div class="section">
                     <div class="header">Company Description</div>
                     <p>{this.job.companyDescription}</p>
-                </div>
-                <div class="section">
+                </div> : null }
+                {this.job.companyDetails ? <div class="section">
                     <div class="header">Company Details</div>                    
                     <p>{this.job.companyDetails}</p>
-                </div>
-                <div class="section">
+                </div> : null }
+                {this.job.jobSummary ? <div class="section">
                     <div class="header">The Job</div>                    
                     <p>{this.job.jobSummary}</p>
-                </div>
+                </div> : null }
             </div> : null }
           </ion-content>
         </ion-page>

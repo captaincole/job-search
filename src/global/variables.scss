@@ -1,1 +1,8 @@
-$app-primary-color: #488aff;
+$app-primary-color: #009688;
+$status-interested: #607D8B;
+$status-interview: #009688;
+$status-offer: #3F51B5;
+
+:root {
+    --ion-color-primary: $app-primary-color;
+}
