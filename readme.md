@@ -17,6 +17,7 @@ The Ionic PWA Toolkit is the recommended way to build production ready Progressi
 - Ionic Framework
 - Stencil Routing
 - Firebase Hosting
+- Firebase Authentication
 - [Firebase Realtime Database Integration](https://www.pwatoday.com/post/integrating-firebase-with-a-stencil-built-pwa)
 - [Global Sass Variables](https://www.pwatoday.com/post/global-css-sass-variables-with-stencil)
 - Push Notifications setup
