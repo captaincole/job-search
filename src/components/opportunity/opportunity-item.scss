@@ -15,7 +15,7 @@
             background-color: transparent;
         }
         .active {
-            color: $app-primary-color;
+            color: map-get($color, primary);
         }
     }
     .content {
