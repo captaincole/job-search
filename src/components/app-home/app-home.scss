@@ -1,9 +1,11 @@
 app-home {
+  background-color: map-get($color, light);
   ion-scroll {
-    padding: 15px !important;
 
     .job-list {
-      padding: 15px;
+      background-color: white;
+      width: 100%;
+      height: calc(100vh - 56px);
     }
 
     opportunity-item {
@@ -19,5 +21,11 @@ app-home {
     font-size: 14px;
     color: white;
     font-weight: 600;
+  }
+}
+@media screen and (min-width:500px) {
+  .job-list {
+    width: 500px !important;
+    margin: auto;
   }
 }

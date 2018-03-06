@@ -5,9 +5,12 @@ $status-offer: #3F51B5;
 
 $color: (
     primary: #009688,
-    secondary: #3F51B5
+    secondary: #3F51B5,
+    light: #607D8B,
 )
 
 :root {
     --ion-color-primary: $app-primary-color;
+    --ion-background-color: $status-interested;
+    --ion-background-md-color: $status-interested;
 }
