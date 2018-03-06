@@ -17,11 +17,8 @@ export class OpportunityItem {
   @Prop() status: string;
   @Prop() user: any;
   @Prop() jobReqUrl: any;
+  @Prop() location: string;
   @Event() opportunityVote: EventEmitter;
-
-  componentDidLoad() {
-
-  }
 
   submitVote(val) {
     if (!this.user) {
@@ -57,8 +54,11 @@ export class OpportunityItem {
                 </a>
                 <div class="sub-content">
                     <span> {this.points * -1} points </span> |
-                    <a> source: { this.source} </a> |
+                    <a> source: { this.source} </a> | &nbsp;
                     <button class={`status ${this.status}`}>{this.status.toUpperCase()}</button>
+                </div>
+                <div class="sub-content">
+                    <a>{this.location}</a>
                 </div>
           </div>
       </div>

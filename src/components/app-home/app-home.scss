@@ -5,7 +5,30 @@ app-home {
     .job-list {
       background-color: white;
       width: 100%;
-      height: calc(100vh - 56px);
+    }
+
+    .profile {
+      padding-top: 15px;
+      width: 100%;
+      margin: auto;
+      text-align: center;
+      margin-bottom: 10px;
+      color: white;
+      font-weight: 600;
+      img {
+        width: 100px;
+        border-radius: 50px;
+      }
+
+      .name {
+        font-size: 18px;
+        padding: 10px;        
+      }
+      .description {
+        padding: 10px;
+        width: 100%;
+        font-size: 14px;
+      }
     }
 
     opportunity-item {
@@ -27,5 +50,8 @@ app-home {
   .job-list {
     width: 500px !important;
     margin: auto;
+  }
+  .profile {
+    width: 500px !important;
   }
 }

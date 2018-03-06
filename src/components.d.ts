@@ -142,6 +142,7 @@ declare global {
       company?: string;
       id?: string;
       jobReqUrl?: any;
+      location?: string;
       points?: number;
       rank?: number;
       source?: string;
