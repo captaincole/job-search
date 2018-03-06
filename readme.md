@@ -1,6 +1,8 @@
 # Job Search PWA
 ### Built from the Ionic-PWA-Toolkit
 
+![Job Search Preview](screenshot-img.png?raw=true "Job Search")
+
 There comes a time in every software engineers life when he has to go out looking for jobs. When this happened to me, I created this app to open source my job search so my friends and family can stay up to date on the process, and provide me with valuable feedback on jobs that I have applied / interviewed for. 
 
 If you want to use this tool, feel free to fork this repo. I have created a sample database file (sample-jobs.json) that you can import into your firebase instance.
