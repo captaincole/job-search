@@ -1,7 +1,4 @@
-# Job Search PWA
-### Built from the Ionic-PWA-Toolkit
-
-![Job Search Preview](job-search-preview.png?raw=true "Job Search")
+# Job Search PWA - Built with Stencil
 
 There comes a time in every software engineers life when he has to go out looking for jobs. When this happened to me, I created this app to open source my job search so my friends and family can stay up to date on the process, and provide me with valuable feedback on jobs that I have applied / interviewed for. 
 
@@ -9,9 +6,11 @@ If you want to use this tool, feel free to fork this repo. I have created a samp
 
 Hopefully this will bring you as much luck as it has brought me!
 
+![Job Search Preview](job-search-preview.png?raw=true "Job Search")
+
 ## Ionic PWA Tookit
 
-The Ionic PWA Toolkit is the recommended way to build production ready Progressive Web Apps (PWAs) with Ionic. This toolkit gets you started with [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+). This combination of tools gives you the ability to build a fast, efficient PWA with zero config needed and best practices out of the box.
+I used the Ionic PWA Toolkit as a starter for this project. The Ionic PWA Toolkit is the recommended way to build production ready Progressive Web Apps (PWAs) with Ionic. This toolkit gets you started with [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+). This combination of tools gives you the ability to build a fast, efficient PWA with zero config needed and best practices out of the box.
 
 ## Features Included in the Job Search PWA
 
