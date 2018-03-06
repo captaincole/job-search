@@ -14,8 +14,12 @@ export class AppHome {
   @State() showLogin: boolean = false;
   @State() userVotes: any = {};
 
+  componentWillLoad() {
+    console.log('Attemptin To Load Component');
+  }
   componentDidLoad() {
     // Load Data!
+    console.log('component did load app-home');
     this.setDataListners();
     this.getUser();
     // add job...

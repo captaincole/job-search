@@ -40,7 +40,7 @@ export class MyApp {
       }).then((toast) => {
         toast.present();
       }); */
-    })
+    });
   }
 
   @Listen('body:ionToastWillDismiss')
@@ -52,10 +52,7 @@ export class MyApp {
     return (
       <ion-app>
         <main>
-          <stencil-router>
-            <stencil-route url='/' component='app-home' exact={true}>
-            </stencil-route>
-          </stencil-router>
+          <app-home></app-home>
         </main>
       </ion-app>
     );
