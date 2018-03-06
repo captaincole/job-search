@@ -55,9 +55,6 @@ export class MyApp {
           <stencil-router>
             <stencil-route url='/' component='app-home' exact={true}>
             </stencil-route>
-
-            <stencil-route url='/profile/:id' component='job-profile'>
-            </stencil-route>
           </stencil-router>
         </main>
       </ion-app>

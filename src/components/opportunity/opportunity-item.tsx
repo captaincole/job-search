@@ -8,7 +8,7 @@ import { Vote } from '../../model/model';
 export class OpportunityItem {
 
   @Prop() vote: Vote;
-  @Prop() jobId: string;
+  @Prop() id: string;
   @Prop() title: string;
   @Prop() company: string;
   @Prop() points: number;
@@ -16,6 +16,7 @@ export class OpportunityItem {
   @Prop() rank: number;
   @Prop() status: string;
   @Prop() user: any;
+  @Prop() jobReqUrl: any;
   @Event() opportunityVote: EventEmitter;
 
   componentDidLoad() {
@@ -29,9 +30,9 @@ export class OpportunityItem {
     }
 
     if (this.vote && this.vote.points === val) {
-        this.opportunityVote.emit({ job: this.jobId, vote: this.vote, value: 0});
+        this.opportunityVote.emit({ job: this.id, vote: this.vote, value: 0});
     } else {
-        this.opportunityVote.emit({ job: this.jobId, vote: this.vote, value: val});
+        this.opportunityVote.emit({ job: this.id, vote: this.vote, value: val});
     }
   }
 
@@ -50,8 +51,7 @@ export class OpportunityItem {
               </button>
           </div>
           <div class="content">
-              <stencil-route-link url={`/profile/${this.jobId}`}>
-                <a class="job-title">
+                <a href={this.jobReqUrl} class="job-title">
                     <span> {this.company} </span>
                     <span> {this.title} </span>
                 </a>
@@ -60,7 +60,6 @@ export class OpportunityItem {
                     <a> source: { this.source} </a> |
                     <button class={`status ${this.status}`}>{this.status.toUpperCase()}</button>
                 </div>
-              </stencil-route-link>
           </div>
       </div>
     );

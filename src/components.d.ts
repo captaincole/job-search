@@ -19,13 +19,8 @@ declare global {
 }
 
 import 'ionicons';
-import '@stencil/router';
 import '@ionic/core';
 
-import {
-  MatchResults,
-  RouterHistory,
-} from '@stencil/router';
 import {
   Vote,
 } from './model/model';
@@ -55,67 +50,6 @@ declare global {
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
       
-    }
-  }
-}
-
-
-import {
-  AppProfile as AppProfile
-} from './components/app-profile/app-profile';
-
-declare global {
-  interface HTMLAppProfileElement extends AppProfile, HTMLStencilElement {
-  }
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
-  interface HTMLElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
-  }
-  interface ElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "app-profile": JSXElements.AppProfileAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface AppProfileAttributes extends HTMLAttributes {
-      match?: MatchResults;
-    }
-  }
-}
-
-
-import {
-  JobProfile as JobProfile
-} from './components/job-profile/job-profile';
-
-declare global {
-  interface HTMLJobProfileElement extends JobProfile, HTMLStencilElement {
-  }
-  var HTMLJobProfileElement: {
-    prototype: HTMLJobProfileElement;
-    new (): HTMLJobProfileElement;
-  };
-  interface HTMLElementTagNameMap {
-    "job-profile": HTMLJobProfileElement;
-  }
-  interface ElementTagNameMap {
-    "job-profile": HTMLJobProfileElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "job-profile": JSXElements.JobProfileAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface JobProfileAttributes extends HTMLAttributes {
-      history?: RouterHistory;
-      match?: MatchResults;
     }
   }
 }
@@ -237,7 +171,8 @@ declare global {
   namespace JSXElements {
     export interface OpportunityItemAttributes extends HTMLAttributes {
       company?: string;
-      jobId?: string;
+      id?: string;
+      jobReqUrl?: any;
       points?: number;
       rank?: number;
       source?: string;

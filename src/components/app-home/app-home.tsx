@@ -1,6 +1,7 @@
 import { Component, State, Listen } from '@stencil/core';
 import { Job } from '../../model/model';
 import firebase from 'firebase';
+import sampleData from '../../sample-data';
 
 @Component({
   tag: 'app-home',
@@ -22,7 +23,7 @@ export class AppHome {
   }
 
   addJob() {
-    jobs.forEach(job => {
+    sampleData.forEach(job => {
         firebase.database().ref('jobs').push(job);
     });
   }
@@ -154,9 +155,8 @@ export class AppHome {
           <div id="firebaseui-auth-container"></div>
           <table class="job-list">
             {this.jobList.map( (job: Job, index) => 
-              <opportunity-item jobId={job.id} title={job.title} status={job.status}
-               rank={index + 1} user={this.user} company={job.company}
-               source={job.source} vote={this.userVotes[job.id]} points={job.points}
+              <opportunity-item {...job}
+               rank={index + 1} user={this.user} vote={this.userVotes[job.id]} 
               ></opportunity-item>
             )}
           </table>
@@ -165,47 +165,3 @@ export class AppHome {
     );
   }
 }
-
-let jobs = [{
-  title: 'Front End Engineer',
-  company: 'loggly',
-  points: 0,
-  source: 'Quest Groups, Darren',
-  status: 'Interested'
-},{
-  title: 'Disributed Engineer',
-  company: 'Protocol Labs',
-  points: 0,
-  source: 'organic',
-  status: 'applied'
-},
-{
-  title: 'Lead Engineer',
-  company: 'SyncThink',
-  points: 0,
-  source: 'Quest, Cheyenne',
-  status: 'interested'
-},
-{
-  title: 'Front End Engineer',
-  company: 'Percipient',
-  points: 0,
-  source: 'Quest, Cheyenne',
-  location: 'Sunnyvale, CA',
-  status: 'interested'
-},{
-  title: 'Front End Engineer',
-  company: 'Oden',
-  points: 0,
-  source: 'Quest, Matt',
-  location: 'NYC',
-  status: 'interested'
-},{
-  title: 'Front End Engineer',
-  company: 'CrowdTap',
-  points: 0,
-  source: 'Quest, Chelsey',
-  location: 'NYC',
-  status: 'intereseted'
-}
-]

@@ -13,4 +13,6 @@ export default interface Job {
     votes?: Array<any>
     linkUrl?: string;
     userVote?: any;
+    jobReqUrl?: any;
+    interviews?: Array<any>;
 }
