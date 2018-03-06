@@ -16,13 +16,12 @@ I used the Ionic PWA Toolkit as a starter for this project. The Ionic PWA Toolki
 
 - Stencil for easily building and loading standardized Web Components
 - Ionic Framework
-- Stencil Routing
 - Firebase Hosting
 - Firebase Authentication
 - [Firebase Realtime Database Integration](https://www.pwatoday.com/post/integrating-firebase-with-a-stencil-built-pwa)
 - [Global Sass Variables](https://www.pwatoday.com/post/global-css-sass-variables-with-stencil)
-- Push Notifications setup
-- Showing a toast when a new version of the PWA is available
+- Push Notifications setup (In Development)
+- Showing a toast when a new version of the PWA is available (In Development)
 - Unit Tests
 - Everything needed for an add to homescreen PWA (service worker, web manifest and iOS meta tags)
 
@@ -33,6 +32,19 @@ fork this repo, downlod it locally and run:
 ```bash
 npm install
 npm start
+```
+
+You will need to add your own firebase configuration file. the file should be ```src/helpers/config.ts``` and look something like this.
+
+```js
+export var firebaseConfig = {
+    apiKey: <api-key>,
+    authDomain: <auth-domain>,
+    databaseURL: <database-url>,
+    projectId: <project-id>,
+    storageBucket: <storage-bucket>,
+    messagingSenderId: <messaging-sender-id>
+}
 ```
 
 ## Production
