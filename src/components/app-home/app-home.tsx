@@ -63,7 +63,9 @@ export class AppHome {
       let newPoints = 0;
       snapshot.forEach( (voteRef: any): any => {
         newPoints += voteRef.val().points;
-        this.userVotes[jobId] = { id: voteRef.key, ...voteRef.val()};
+        if (this.user && voteRef.val().email === this.user.email) {
+          this.userVotes[jobId] = { id: voteRef.key, ...voteRef.val()};
+        }
       });
       // Update Job
       firebase.database().ref('jobs/' + jobId).update({
@@ -80,6 +82,7 @@ export class AppHome {
           let vote = voteRef.val();
           this.userVotes[vote.voteOn] = { id: voteRef.key, ...vote };
         });
+        console.log('user votes', this.userVotes);
       });
     }
   }
@@ -91,7 +94,7 @@ export class AppHome {
     firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         this.user = user;
-        this.findUserVotesOnce()
+        this.findUserVotesOnce();
         // this.showLogin = false;
         console.log('Found User State Change' , this.user);
       } else {

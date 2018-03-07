@@ -55,7 +55,7 @@ export class OpportunityItem {
                 <div class="sub-content">
                     <span> {this.points * -1} points </span> |
                     <a> source: { this.source} </a> | &nbsp;
-                    <button class={`status ${this.status}`}>{this.status.toUpperCase()}</button>
+                    <button class={`status ${this.status}`}>{this.status ? this.status.toUpperCase() : 'interested'}</button>
                 </div>
                 <div class="sub-content">
                     <a>{this.location}</a>
