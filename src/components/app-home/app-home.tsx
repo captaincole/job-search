@@ -14,7 +14,7 @@ export class AppHome {
   @State() showLogin: boolean = false;
   @State() userVotes: any = {};
   @State() personalPhotoUrl: string = 'assets/images/cropped-headshot.jpg';
-  @State() linkedIn: string = 'https://www.linkedin.com/in/andrew-cole-03594427/';
+  @State() linkedIn: string = 'https://www.linkedin.com/in/andrew-cole-03594427';
   
   componentWillLoad() {
     console.log('Attemptin To Load Component');
@@ -166,7 +166,7 @@ export class AppHome {
           <div class="profile">
             <img src={this.personalPhotoUrl}></img>
             <div class="name">Andrew Cole</div>
-            <div class="description">Welcome to my software engineering job leaderboard! I was having trouble deciding between some of the companies that I applied and am interviewing with for my next position, so I built this website to let people vote on their favorite job.</div>
+            <div class="description">Welcome to my software engineering job leaderboard! I was having trouble deciding between some of the companies that I would like to work for, so I built this website to let people vote on their favorite companies.</div>
             <div class="description">Want to add your company to the list? Think this leaderboard is pretty cool? I am available, and looking for new opportunities.</div>
             <ion-button onClick={() => this.hireMe()}>Hire Me</ion-button>
           </div>
