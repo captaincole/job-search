@@ -154,4 +154,34 @@ declare global {
   }
 }
 
+
+import {
+  OpportunityItem as PushSubscription
+} from './components/push-subscription/push-subscription';
+
+declare global {
+  interface HTMLPushSubscriptionElement extends PushSubscription, HTMLStencilElement {
+  }
+  var HTMLPushSubscriptionElement: {
+    prototype: HTMLPushSubscriptionElement;
+    new (): HTMLPushSubscriptionElement;
+  };
+  interface HTMLElementTagNameMap {
+    "push-subscription": HTMLPushSubscriptionElement;
+  }
+  interface ElementTagNameMap {
+    "push-subscription": HTMLPushSubscriptionElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "push-subscription": JSXElements.PushSubscriptionAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface PushSubscriptionAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }

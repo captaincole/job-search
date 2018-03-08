@@ -15,10 +15,7 @@ export class AppHome {
   @State() userVotes: any = {};
   @State() personalPhotoUrl: string = 'assets/images/cropped-headshot.jpg';
   @State() linkedIn: string = 'https://www.linkedin.com/in/andrew-cole-03594427';
-  
-  componentWillLoad() {
-    console.log('Attemptin To Load Component');
-  }
+  @State() githubUrl: string = 'https://github.com/thielCole/job-search';
 
   componentDidLoad() {
     // Load Data!
@@ -63,14 +60,16 @@ export class AppHome {
       let newPoints = 0;
       snapshot.forEach( (voteRef: any): any => {
         newPoints += voteRef.val().points;
-        if (this.user && voteRef.val().email === this.user.email) {
+        if (this.user && voteRef.val().user === this.user.email) {
           this.userVotes[jobId] = { id: voteRef.key, ...voteRef.val()};
         }
       });
-      // Update Job
-      firebase.database().ref('jobs/' + jobId).update({
-        points: newPoints
-      });
+      // Update Job If Logged In...
+      if (this.user && this.user.email) {
+        firebase.database().ref('jobs/' + jobId).update({
+          points: newPoints
+        });
+      }
     });
   }
 
@@ -82,7 +81,6 @@ export class AppHome {
           let vote = voteRef.val();
           this.userVotes[vote.voteOn] = { id: voteRef.key, ...vote };
         });
-        console.log('user votes', this.userVotes);
       });
     }
   }
@@ -151,6 +149,10 @@ export class AppHome {
     }
   }
 
+  github() {
+    window.open(this.githubUrl);
+  }
+
   render() {
     return (
       <ion-page>
@@ -169,9 +171,16 @@ export class AppHome {
           <div class="profile">
             <img src={this.personalPhotoUrl}></img>
             <div class="name">Andrew Cole</div>
-            <div class="description">Welcome to my software engineering job leaderboard! I was having trouble deciding between some of the companies that I would like to work for, so I built this website to let people vote on their favorite companies.</div>
-            <div class="description">Want to add your company to the list? Think this leaderboard is pretty cool? I am available, and looking for new opportunities.</div>
-            <ion-button onClick={() => this.hireMe()}>Hire Me</ion-button>
+            <div class="links">
+              <button class="social" onClick={() => this.github()}>
+                <i class="fab fa-github fa-2x"></i>
+              </button>
+              <button class="social" onClick={() => this.hireMe()}>
+                <i class="fab fa-linkedin fa-2x"></i>
+              </button>
+            </div>
+            <div class="description">Welcome to my interview leaderboard! I decided to let my friends (and now the internet) vote on the companies that I am interviewing with to help me decide what to do with my next career jump. Login and vote below!</div>
+            { false ? <push-subscription></push-subscription> : null }
           </div>
           <table class="job-list">
             {this.jobList.map( (job: Job, index) => 
@@ -180,6 +189,10 @@ export class AppHome {
               ></opportunity-item>
             )}
           </table>
+          <div class="footer">
+            <div class="description">Want to add your company to the list? Think this leaderboard is pretty cool? I am available, and looking for new opportunities.</div>
+            <ion-button onClick={() => this.hireMe()}>Hire Me</ion-button>
+          </div>
         </ion-content>
       </ion-page>
     );
